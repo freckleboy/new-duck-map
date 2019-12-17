@@ -4,7 +4,7 @@ const duckIcon = L.icon({iconUrl: 'Plastic-model-duck-icon.png'});
 
 const publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1-Cdx1pmsxEx3nNdWQei-hiDqkxabNI6W3qZVIvd8vFE/edit?usp=sharing';
 
-const markers = L.markerClusterGroup();
+const markers = L.markerClusterGroup({disableClusteringAtZoom: 17});
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -44,6 +44,10 @@ function showInfo(data, tabletop) {
 }
 
 duckMap.addLayer(markers);
+
+markers.on('add', function(e) {
+  alert(e.type, "Map added.");
+});
 
 function errHandler(element) {
   console.log("Error: ", element["lat"], element["lng"]);
