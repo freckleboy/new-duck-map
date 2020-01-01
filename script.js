@@ -2,6 +2,8 @@ const duckMap = L.map('duck-map').setView([51.197739, -1.903253], 2);
 
 const duckIcon = L.icon({iconUrl: 'Plastic-model-duck-icon.png'});
 
+const loadingMsg = 'Please wait while the ducks load...';
+
 const publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1-Cdx1pmsxEx3nNdWQei-hiDqkxabNI6W3qZVIvd8vFE/edit?usp=sharing';
 
 const markers = L.markerClusterGroup({disableClusteringAtZoom: 17});
