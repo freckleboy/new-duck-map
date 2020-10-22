@@ -17,7 +17,7 @@ L.tileLayer(
     maxZoom: 18,
     id: 'mapbox/streets-v11',
     accessToken:
-      'pk.eyJ1Ijoid2ViZGV2cmljaCIsImEiOiJjazQxaXNjY3QwMXFwM2Vxcjd3dmh5NjJsIn0.lXktNhvx1mMfXlihsHZINQ',
+      'pk.eyJ1Ijoid2ViZGV2cmljaCIsImEiOiJjazNzazR4MHQwNzhxM25tbmswd2I5eWVmIn0.0mQyGSHfgYMP6phzW323sQ',
   }
 ).addTo(duckMap);
 
