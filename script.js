@@ -1,6 +1,9 @@
 const duckMap = L.map('duck-map').setView([51.197739, -1.903253], 2);
 
-const duckIcon = L.icon({ iconUrl: 'Plastic-model-duck-icon.png' });
+const duckIcon = L.icon({
+  iconUrl: 'Plastic-model-duck-icon.png',
+  iconSize: 30,
+});
 
 const loadingMsg = 'Please wait while the ducks load...';
 
