@@ -5,7 +5,7 @@ const duckIcon = L.icon({ iconUrl: 'Plastic-model-duck-icon.png' });
 const loadingMsg = 'Please wait while the ducks load...';
 
 const publicSpreadsheetUrl =
-  'https://docs.google.com/spreadsheets/d/1-Cdx1pmsxEx3nNdWQei-hiDqkxabNI6W3qZVIvd8vFE/edit?usp=sharing';
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vS01Bk0l6EPXe3FQmmppTpvTb1SgiYuHHytf1ywUMaLR5bpIRBrbXFaN7XkpjZOGueiZ54oduMsEvQs/pub?gid=198631329&single=true&output=csv';
 
 const markers = L.markerClusterGroup({ disableClusteringAtZoom: 17 });
 
@@ -24,16 +24,17 @@ L.tileLayer(
 ).addTo(duckMap);
 
 function init() {
-  Tabletop.init({
-    key: publicSpreadsheetUrl,
-    callback: showInfo,
-    simpleSheet: true,
-    error: errHandler,
-    // postProcess: createMarkers
+  Papa.parse(publicSpreadsheetUrl, {
+    download: true,
+    header: true,
+    complete: showInfo,
   });
 }
 
-function showInfo(data, tabletop) {
+function showInfo(results) {
+  const { data } = results;
+  const { errors } = results;
+
   for (const i in data) {
     const marker = L.marker([data[i].Lat, data[i].Lng], {
       title: data[i]['Duck name'],
@@ -52,6 +53,8 @@ function showInfo(data, tabletop) {
 
     markers.addLayer(marker);
   }
+
+  console.log(errors);
 }
 
 duckMap.addLayer(markers);
@@ -59,9 +62,5 @@ duckMap.addLayer(markers);
 markers.on('add', function(e) {
   alert(e.type, 'Map added.');
 });
-
-function errHandler(element) {
-  console.log('Error: ', element.lat, element.lng);
-}
 
 window.addEventListener('DOMContentLoaded', init);
