@@ -20,7 +20,6 @@ nav {
 }
 
 nav > h1, nav > p {
-  flex: 0 0 auto;
   padding-left: 20px;
   padding-right: 20px;
 }
