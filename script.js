@@ -1,4 +1,4 @@
-const duckMap = L.map("duck-map").setView([51.197739, -1.903253], 2);
+const duckMap = L.map("duck-map").setView([51.508, -0.1276], 4);
 
 const duckIcon = L.icon({
   iconUrl: "Plastic-model-duck-icon.png",
